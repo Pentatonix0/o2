@@ -2,16 +2,19 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 import type { Product } from "@/entities/product/model/types";
+import { getProductRoute } from "@/shared/config/routes";
 
 interface RelatedProductsProps {
   items: Product[];
 }
 
 function RelatedProducts({ items }: RelatedProductsProps) {
+  const navigate = useNavigate();
+
   const teleport = (id: string) => {
-    window.history.pushState({}, "", `/product/${id}`);
-    window.dispatchEvent(new PopStateEvent("popstate"));
+    navigate(getProductRoute(id));
   };
 
   return (

@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { Link as RouterLink } from "react-router-dom";
 import { clearFavorites } from "@/entities/favorites/model/favoritesSlice";
 import {
   selectFavoriteItems,
@@ -32,7 +33,7 @@ function FavoriteList() {
           <Typography color="text.secondary">
             Добавьте несколько товаров сердцем, и они появятся здесь.
           </Typography>
-          <Button component="a" href={roadBook.home} color="secondary">
+          <Button component={RouterLink} to={roadBook.home} color="secondary">
             Вернуться на главную
           </Button>
         </Stack>

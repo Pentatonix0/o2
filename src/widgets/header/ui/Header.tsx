@@ -9,6 +9,7 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { Link as RouterLink } from "react-router-dom";
 import { selectCartSummary } from "@/entities/cart/model/selectors";
 import { selectFavoritesCount } from "@/entities/favorites/model/selectors";
 import { roadBook } from "@/shared/config/routes";
@@ -43,7 +44,7 @@ function Header() {
             justifyContent="space-between"
             sx={{ width: "100%" }}
           >
-            <a href={roadBook.home} style={{ color: "inherit", textDecoration: "none" }}>
+            <RouterLink to={roadBook.home} style={{ color: "inherit", textDecoration: "none" }}>
               <Stack direction="row" spacing={1.5} alignItems="center">
                 <StorefrontOutlinedIcon color="secondary" />
                 <Box>
@@ -53,16 +54,16 @@ function Header() {
                   </Typography>
                 </Box>
               </Stack>
-            </a>
+            </RouterLink>
 
             <Stack direction="row" spacing={3} alignItems="center">
-              <a href={roadBook.product} style={navLinkStyle}>
+              <RouterLink to={roadBook.catalog} style={navLinkStyle}>
                 Каталог
-              </a>
-              <a href={roadBook.productGhost} style={navLinkStyle}>
+              </RouterLink>
+              <RouterLink to={roadBook.catalog} style={navLinkStyle}>
                 Подборки
-              </a>
-              <a href={roadBook.favorites} style={navLinkStyle}>
+              </RouterLink>
+              <RouterLink to={roadBook.favorites} style={navLinkStyle}>
                 <Stack direction="row" spacing={1} alignItems="center">
                   <Badge
                     badgeContent={favoritesCount}
@@ -78,8 +79,8 @@ function Header() {
                   </Badge>
                   <span>Избранное</span>
                 </Stack>
-              </a>
-              <a href={roadBook.cart} style={navLinkStyle}>
+              </RouterLink>
+              <RouterLink to={roadBook.cart} style={navLinkStyle}>
                 <Stack direction="row" spacing={1} alignItems="center">
                   <Badge
                     badgeContent={summary.qty}
@@ -95,7 +96,7 @@ function Header() {
                   </Badge>
                   <span>Корзина</span>
                 </Stack>
-              </a>
+              </RouterLink>
             </Stack>
           </Stack>
         </Toolbar>

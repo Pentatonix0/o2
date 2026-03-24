@@ -4,6 +4,7 @@ import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { Link as RouterLink } from "react-router-dom";
 import { clearCart } from "@/entities/cart/model/cartSlice";
 import {
   selectCartItems,
@@ -33,7 +34,7 @@ function CartList() {
           <Typography color="text.secondary">
             Обычно сюда что-то доходит, но не всегда.
           </Typography>
-          <Button component="a" href={roadBook.productGhost} color="secondary">
+          <Button component={RouterLink} to={roadBook.catalog} color="secondary">
             Вернуться в каталог
           </Button>
         </Stack>

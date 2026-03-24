@@ -2,6 +2,8 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { Link as RouterLink } from "react-router-dom";
+import { roadBook } from "@/shared/config/routes";
 import PageFrame from "@/shared/ui/page-frame/PageFrame";
 
 function NotFoundPage() {
@@ -22,7 +24,7 @@ function NotFoundPage() {
           <Typography color="text.secondary">
             Возможно, вы пришли по несуществующей ссылке.
           </Typography>
-          <Button component="a" href="/" variant="contained" color="secondary">
+          <Button component={RouterLink} to={roadBook.home} variant="contained" color="secondary">
             На главную
           </Button>
         </Stack>

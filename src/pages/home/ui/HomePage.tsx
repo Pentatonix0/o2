@@ -4,8 +4,9 @@ import Grid from "@mui/material/Grid2";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { Link as RouterLink } from "react-router-dom";
 import { products } from "@/entities/product/model/products";
-import { roadBook } from "@/shared/config/routes";
+import { getProductRoute } from "@/shared/config/routes";
 import PageFrame from "@/shared/ui/page-frame/PageFrame";
 import ProductGrid from "@/widgets/product-grid/ui/ProductGrid";
 
@@ -45,8 +46,8 @@ function HomePage() {
                 <Typography variant="h4">{unit.title}</Typography>
                 <Typography sx={{ opacity: 0.92 }}>{unit.short}</Typography>
                 <Box>
-                  <a
-                    href={`${roadBook.product}/${unit.id}`}
+                  <RouterLink
+                    to={getProductRoute(unit.id)}
                     style={{
                       color: "#fff",
                       fontWeight: 700,
@@ -54,7 +55,7 @@ function HomePage() {
                     }}
                   >
                     Смотреть товар
-                  </a>
+                  </RouterLink>
                 </Box>
               </Stack>
             </Paper>

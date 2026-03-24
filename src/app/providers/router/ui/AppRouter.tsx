@@ -7,6 +7,7 @@ import ProductPage from "@/pages/product/ui/ProductPage";
 import CartPage from "@/pages/cart/ui/CartPage";
 import FavoritesPage from "@/pages/favorites/ui/FavoritesPage";
 import NotFoundPage from "@/pages/not-found/ui/NotFoundPage";
+import { roadBook } from "@/shared/config/routes";
 import Header from "@/widgets/header/ui/Header";
 
 interface RoutedPageProps {
@@ -28,7 +29,7 @@ function AppRouter() {
   return (
     <Routes>
       <Route
-        path="/"
+        path={roadBook.home}
         element={
           <RoutedPage>
             <HomePage />
@@ -36,7 +37,15 @@ function AppRouter() {
         }
       />
       <Route
-        path="/product"
+        path={roadBook.catalog}
+        element={
+          <RoutedPage>
+            <HomePage />
+          </RoutedPage>
+        }
+      />
+      <Route
+        path={`${roadBook.catalog}/:id`}
         element={
           <RoutedPage>
             <ProductPage />
@@ -44,15 +53,7 @@ function AppRouter() {
         }
       />
       <Route
-        path="/product/:id"
-        element={
-          <RoutedPage>
-            <ProductPage />
-          </RoutedPage>
-        }
-      />
-      <Route
-        path="/cart"
+        path={roadBook.cart}
         element={
           <RoutedPage>
             <CartPage />
@@ -60,7 +61,7 @@ function AppRouter() {
         }
       />
       <Route
-        path="/favorites"
+        path={roadBook.favorites}
         element={
           <RoutedPage>
             <FavoritesPage />
@@ -68,7 +69,7 @@ function AppRouter() {
         }
       />
       <Route
-        path="/404"
+        path={roadBook.notFound}
         element={
           <RoutedPage>
             <NotFoundPage />
@@ -79,7 +80,7 @@ function AppRouter() {
         path="*"
         element={
           <RoutedPage>
-            <HomePage />
+            <NotFoundPage />
           </RoutedPage>
         }
       />

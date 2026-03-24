@@ -1,8 +1,11 @@
 export const roadBook = {
   home: "/",
+  catalog: "/products",
   cart: "/cart",
   favorites: "/favorites",
-  product: "/product",
-  productGhost: "/products",
   notFound: "/404",
 } as const;
+
+export function getProductRoute(id: string | number): string {
+  return `${roadBook.catalog}/${id}`;
+}

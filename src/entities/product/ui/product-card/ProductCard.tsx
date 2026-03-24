@@ -6,10 +6,11 @@ import CardContent from "@mui/material/CardContent";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { Link as RouterLink } from "react-router-dom";
 import type { Product } from "@/entities/product/model/types";
 import AddToCartButton from "@/features/add-to-cart/ui/AddToCartButton";
 import FavoriteButton from "@/features/toggle-favorite/ui/FavoriteButton";
-import { roadBook } from "@/shared/config/routes";
+import { getProductRoute } from "@/shared/config/routes";
 import { formatPrice } from "@/shared/lib/formatPrice";
 
 interface ProductCardProps {
@@ -28,7 +29,7 @@ function ProductCard({ product }: ProductCardProps) {
         backgroundColor: "rgba(255, 251, 245, 0.85)",
       }}
     >
-      <a href={`${roadBook.productGhost}/${product.id}`} style={{ textDecoration: "none" }}>
+      <RouterLink to={getProductRoute(product.id)} style={{ textDecoration: "none" }}>
         <Box
           sx={{
             minHeight: 210,
@@ -52,16 +53,13 @@ function ProductCard({ product }: ProductCardProps) {
             <Typography sx={{ opacity: 0.9 }}>{product.category}</Typography>
           </Stack>
         </Box>
-      </a>
+      </RouterLink>
 
       <CardContent sx={{ display: "flex", flexDirection: "column", flexGrow: 1, gap: 2.5 }}>
         <Stack spacing={1}>
-          <a
-            href={`${roadBook.product}/${product.id}`}
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
+          <RouterLink to={getProductRoute(product.id)} style={{ color: "inherit", textDecoration: "none" }}>
             <Typography variant="h6">{product.title}</Typography>
-          </a>
+          </RouterLink>
           <Typography color="text.secondary">{product.short}</Typography>
         </Stack>
 
@@ -73,12 +71,7 @@ function ProductCard({ product }: ProductCardProps) {
           sx={{ mt: "auto" }}
         >
           <Typography variant="h6">{formatPrice(product.price)}</Typography>
-          <Button
-            href={`${roadBook.product}/${product.id}`}
-            component="a"
-            color="secondary"
-            endIcon={<ArrowOutwardIcon />}
-          >
+          <Button component={RouterLink} to={getProductRoute(product.id)} color="secondary" endIcon={<ArrowOutwardIcon />}>
             Открыть
           </Button>
         </Stack>
